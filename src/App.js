@@ -1,22 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from 'react';
+import Boxes from './components/Boxes';
+import Form from './components/Form';
 
 function App() {
+  const[boxes, setBoxes] = useState([])
+  const[boxColor, setBoxColor] = useState({
+    color: ""
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className='App-header'>
+        <Form 
+        boxColor={boxColor}
+        setBoxColor={setBoxColor}
+        boxes={boxes}
+        setBoxes={setBoxes}
+        />
+        {
+          Boxes.map(box => <box color={box.color}/>)
+        }
       </header>
     </div>
   );
